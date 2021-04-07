@@ -1,0 +1,113 @@
+Nodes: 50
+Density: 20
+-----
+Distance from 0 to the point 0 is: 0
+Distance from 0 to the point 1 is: 5.42097
+Distance from 0 to the point 2 is: 1.31587
+Distance from 0 to the point 3 is: 2.28895
+Distance from 0 to the point 4 is: 2.35789
+Distance from 0 to the point 5 is: 3.54088
+Distance from 0 to the point 6 is: 4.2794
+Distance from 0 to the point 7 is: 4.91382
+Distance from 0 to the point 8 is: 2.81774
+Distance from 0 to the point 9 is: 3.29395
+Distance from 0 to the point 10 is: 4.54506
+Distance from 0 to the point 11 is: 3.03934
+Distance from 0 to the point 12 is: 2.34965
+Distance from 0 to the point 13 is: 3.7955
+Distance from 0 to the point 14 is: 3.70727
+Distance from 0 to the point 15 is: 4.34181
+Distance from 0 to the point 16 is: 4.12214
+Distance from 0 to the point 17 is: 6.76815
+Distance from 0 to the point 18 is: 5.22425
+Distance from 0 to the point 19 is: 3.59163
+Distance from 0 to the point 20 is: 5.89898
+Distance from 0 to the point 21 is: 5.01523
+Distance from 0 to the point 22 is: 4.13251
+Distance from 0 to the point 23 is: 3.36811
+Distance from 0 to the point 24 is: 2.33262
+Distance from 0 to the point 25 is: 3.88064
+Distance from 0 to the point 26 is: 6.41301
+Distance from 0 to the point 27 is: 5.34077
+Distance from 0 to the point 28 is: 2.39283
+Distance from 0 to the point 29 is: 5.19953
+Distance from 0 to the point 30 is: 6.17652
+Distance from 0 to the point 31 is: 3.63585
+Distance from 0 to the point 32 is: 4.01825
+Distance from 0 to the point 33 is: 4.84768
+Distance from 0 to the point 34 is: 4.65041
+Distance from 0 to the point 35 is: 1.03845
+Distance from 0 to the point 36 is: 4.54418
+Distance from 0 to the point 37 is: 3.80209
+Distance from 0 to the point 38 is: 4.74474
+Distance from 0 to the point 39 is: 4.4503
+Distance from 0 to the point 40 is: 2.55516
+Distance from 0 to the point 41 is: 4.02841
+Distance from 0 to the point 42 is: 2.99902
+Distance from 0 to the point 43 is: 4.79357
+Distance from 0 to the point 44 is: 3.90976
+Distance from 0 to the point 45 is: 2.888
+Distance from 0 to the point 46 is: 3.87872
+Distance from 0 to the point 47 is: 3.80422
+Distance from 0 to the point 48 is: 4.54863
+Distance from 0 to the point 49 is: 5.53722
+
+The average is: 3.93079
+
+
+
+Nodes: 50
+Density: 40
+-----
+Distance from 0 to the point 0 is: 0
+Distance from 0 to the point 1 is: 3.10828
+Distance from 0 to the point 2 is: 4.41865
+Distance from 0 to the point 3 is: 1.32438
+Distance from 0 to the point 4 is: 1.07938
+Distance from 0 to the point 5 is: 3.07862
+Distance from 0 to the point 6 is: 3.90811
+Distance from 0 to the point 7 is: 3.28681
+Distance from 0 to the point 8 is: 3.31297
+Distance from 0 to the point 9 is: 4.47908
+Distance from 0 to the point 10 is: 2.34779
+Distance from 0 to the point 11 is: 3.24259
+Distance from 0 to the point 12 is: 4.55022
+Distance from 0 to the point 13 is: 3.26655
+Distance from 0 to the point 14 is: 2.25962
+Distance from 0 to the point 15 is: 2.79324
+Distance from 0 to the point 16 is: 4.82159
+Distance from 0 to the point 17 is: 1.55373
+Distance from 0 to the point 18 is: 3.22358
+Distance from 0 to the point 19 is: 3.84954
+Distance from 0 to the point 20 is: 3.93414
+Distance from 0 to the point 21 is: 4.28791
+Distance from 0 to the point 22 is: 2.98859
+Distance from 0 to the point 23 is: 4.67827
+Distance from 0 to the point 24 is: 4.22562
+Distance from 0 to the point 25 is: 3.26676
+Distance from 0 to the point 26 is: 3.55763
+Distance from 0 to the point 27 is: 2.19089
+Distance from 0 to the point 28 is: 3.06406
+Distance from 0 to the point 29 is: 2.66662
+Distance from 0 to the point 30 is: 1.67595
+Distance from 0 to the point 31 is: 3.18662
+Distance from 0 to the point 32 is: 3.62822
+Distance from 0 to the point 33 is: 3.01379
+Distance from 0 to the point 34 is: 2.88772
+Distance from 0 to the point 35 is: 3.88058
+Distance from 0 to the point 36 is: 2.87262
+Distance from 0 to the point 37 is: 2.84433
+Distance from 0 to the point 38 is: 4.12317
+Distance from 0 to the point 39 is: 4.26725
+Distance from 0 to the point 40 is: 3.62905
+Distance from 0 to the point 41 is: 3.95068
+Distance from 0 to the point 42 is: 4.05478
+Distance from 0 to the point 43 is: 3.46941
+Distance from 0 to the point 44 is: 6.65862
+Distance from 0 to the point 45 is: 4.44392
+Distance from 0 to the point 46 is: 4.36015
+Distance from 0 to the point 47 is: 3.39723
+Distance from 0 to the point 48 is: 4.53951
+Distance from 0 to the point 49 is: 2.57158
+
+The average is: 3.36441
