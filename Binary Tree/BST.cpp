@@ -1,329 +1,294 @@
 #include <iostream>
 using namespace std;
 
-// BST -> binary search tree
-struct BST_node{
-	int data;
-	BST_node* left = NULL; //points to left child 
-	BST_node* right = NULL; //points to right child
+struct BST_node {
+	float data;
+	BST_node* left = NULL;
+	BST_node* right = NULL;
 };
 
-//to store the address of root node
-BST_node* rootNode = NULL;
+// root node -> points to the first/root node of the BST
+BST_node* root = NULL;
 
-void Insert();
-void preOrderTraversal(BST_node* root);
-void postOrderTraversal(BST_node* root);
-void InOrderTraversal(BST_node* root);
-void Search(); 
-void averageOfAllNodes(BST_node* s);
-void deleteNode();
-void minValue(BST_node* m);
-void maxValue(BST_node* m);
-int minValueUsingRecursion(BST_node* m);
-int maxValueUsingRecursion(BST_node* m);
-BST_node* SearchForDeletion(BST_node* ptr, int num);
+// INSERTION OF NODE
+void insert_node();
 
-int main()
-{
-	
-	int choices;
-	do
-	{
-		cout<<"MENU"<<endl;
-		cout<<"1. Insert Nodes"<<endl;
-		cout<<"2. PreOder Traversal"<<endl;
-		cout<<"3. PostOder Traversal"<<endl;
-		cout<<"4. InOder Traversal"<<endl;
-		cout<<"5. Search an element"<<endl;
-		cout<<"6. Find the average of nodes in BST"<<endl;
-		cout<<"7. Find minimum"<<endl;
-		cout<<"8. Find maximum"<<endl;
-		cout<<"9. Delete a node"<<endl;
-		cout<<"0. Exit"<<endl;
-		
-		cout<<"Enter your choice: ";
-		cin>>choices;
+// DELETION OF NODE
+void delete_node(BST_node* root_node, int key);
+
+// TREE TRAVERSAL ALGORITHMS USING RECURSION
+void preorder_traversal(BST_node* root_node);
+void postorder_traversal(BST_node* root_node);
+void inorder_traversal(BST_node* root_node);
+
+// SEARCHING
+int search_specific_key(BST_node* root_node, int key);
+
+// FUNCTIONS FOR FINDING MIN, MAX & AVERAGE
+int max_value(BST_node* root_node);
+int min_value(BST_node* root_node);
+float avg_value(BST_node* root_node, int sum, int count);
+
+int main() {
+
+	int option;
+	do {
+		cout<<"\n------------------------------------------------"<<endl;
+		cout<<"BINARY SEARCH TREE - BST	                        |"<<endl;
+		cout<<"--------------------------------------------------"<<endl;
+		cout<<"1. INSERT A NODE                                 |"<<endl;
+		cout<<"2. DELETE A NODE                                 |"<<endl;
+		cout<<"3. DISPLAY TREE USING PREORDER TRAVERSAL         |"<<endl;
+		cout<<"4. DISPLAY TREE USING POSTORDER TRAVERSAL        |"<<endl;
+		cout<<"5. DISPLAY TREE USING INORDER TRAVERSAL          |"<<endl;
+		cout<<"6. SEARCH A KEY VALUE                            |"<<endl;
+		cout<<"7. MIN VALUE OF THE TREE                         |"<<endl;
+		cout<<"8. MAX VALUE OF THE TREE                         |"<<endl;
+		cout<<"9. AVERAGE VALUE OF THE NODES OF TREE            |"<<endl;
+		cout<<"0. EXIT            								|"<<endl;
+		cout<<"--------------------------------------------------"<<endl;
+
+		cout<<"ENTER YOUR CHOICE: ";
+		cin>>option;
 		cout<<endl;
-		switch(choices)
-		{
-			case 1:
-				Insert();
-				break;
-			case 2:
-				preOrderTraversal(rootNode);
-				break;
-			case 3:
-				postOrderTraversal(rootNode);
-				break;
-			case 4:
-				InOrderTraversal(rootNode);
-				break;
-			case 5:
-				Search();
-				break;
-			case 6:
-				averageOfAllNodes(rootNode);
-				break;
-			case 7:
-				minValue(rootNode);
-				break;
-			case 8:
-				maxValue(rootNode);
-				break;
-			case 9:
-				deleteNode();
-				break;
-			default:
-				cout<<"Thank You"<<endl;
-				break;
+
+		if(option < 0 || option > 9) {
+			cout<<"INVALID OPTION! PLEASE SELECT A CORRECT OPTION!"<<endl;
+		} else {
+			switch(option) {
+				case 1:
+					insert_node();
+					break;
+				case 2:
+					int x;
+					cout<<"ENTER A VALUE THAT YOU WANT TO DELETE: ";
+					cin>>x;
+					delete_node(root, x);
+					break;
+				case 3:
+					preorder_traversal(root);
+					break;
+				case 4:
+					postorder_traversal(root);
+					break;
+				case 5:
+					inorder_traversal(root);
+					break;
+				case 6:
+					int key;
+					cout<<"ENTER A VALUE THAT YOU WANT TO SEARCH: ";
+					cin>>key;
+					if(search_specific_key(root, key) == 0) cout<<"TREE IS EMPTY"<<endl;
+					else if(search_specific_key(root, key) == 1) cout<<"KEY IS FOUND!"<<endl;
+					else cout<<"KEY IS NOT FOUND!"<<endl;
+					break;
+				case 7:
+					if(min_value(root) == -1) cout<<"TREE IS EMPTY"<<endl;
+					else cout<<"MINIMUM: "<<min_value(root)<<endl;
+					break;
+				case 8:
+					if(max_value(root) == -1) cout<<"TREE IS EMPTY"<<endl;
+					else cout<<"MAXIMUM: "<<max_value(root)<<endl;
+					break;
+				case 9:
+					if(avg_value(root, 0, 0) > 0) {
+						cout<<"AVERAGE OF ALL NODES: "<<avg_value(root, 0, 0)<<endl;
+					}
+					else cout<<"TREE IS EMPTY!"<<endl;
+					break;
+				default:
+					cout<<"SEE YOU SOON... :)"<<endl;
+					break;
+			}
 		}
-	} while(choices != 0);
-	
-	/*
-	cout<<"No. of Nodes: ";
-	cin>>numberOfNodes;
-	cout<<endl;
-	
-	for(int i = 1; i <= numberOfNodes; i++)
-	{
-		Insert();
-	}
-	cout<<endl;
-	
-	preOrderTraversal(rootNode);
-	cout<<endl;
-	
-	Search();
-	
-	cout<<"Average: "<<averageOfAllNodes(rootNode)<<endl;
-	
-	cout<<"Minimum: "<<minValue(rootNode)<<endl;
-	cout<<"Maximum: "<<maxValue(rootNode)<<endl;
-	cout<<"Minimum: "<<minValueUsingRecursion(rootNode)<<endl;
-	cout<<"Maximum: "<<maxValueUsingRecursion(rootNode)<<endl;
-	
-	cout<<"PostOrder Traversal: ";
-	postOrderTraversal(rootNode);
-	cout<<endl;
-	
-	cout<<"InOrder Traversal: ";
-	InOrderTraversal(rootNode);
-	cout<<endl;
-	*/
+	} while(option != 0);
+
+	return 0;
 }
 
-void preOrderTraversal(BST_node* root)
-{	
-	if(root == NULL)
-	{
-		return;
-	}
-	
-	cout<<root -> data<<" ";
-	preOrderTraversal(root -> left);
-	preOrderTraversal(root -> right);
-}
+// INSERTION OF NODE
+void insert_node() {
+	BST_node* new_node = new BST_node();
+	cout<<"Enter a value: ";
+	cin>>new_node->data;
 
-void postOrderTraversal(BST_node* root)
-{
-	if(root == NULL)
-	{
-		return;
-	}
-	
-	postOrderTraversal(root -> left);
-	postOrderTraversal(root -> right);
-	cout<<root -> data<<" ";
-}
-
-void InOrderTraversal(BST_node* root)
-{
-	if(root == NULL)
-	{
-		return;
-	}
-	
-	InOrderTraversal(root -> left);
-	cout<<root -> data<<" ";
-	InOrderTraversal(root -> right);	
-}
-
-void Insert()
-{
-	BST_node* newNode = new BST_node();
-	cout<<"Enter a number: ";
-	cin>>newNode -> data;
-	newNode -> left = newNode -> right = NULL;
-	
-	if(rootNode == NULL)
-	{
-		rootNode = newNode;
-	}
-	else
-	{
-		BST_node* ptr = rootNode;
-		BST_node* helper = rootNode;
+	// checks whether the tree exists or not
+	if(root == NULL) root = new_node;
+	else {
+		BST_node* ptr = root;
+		BST_node* prev_temp = root;
 		
-		while(ptr != NULL)
-		{
-			helper = ptr;
+		// traverse the tree for finding the correct position for insertion
+		while(ptr != NULL) {
+			prev_temp = ptr;
 			
-			if(newNode -> data >= ptr -> data)
-			{
-				ptr = ptr -> right;
-			}
-			else
-			{
-				ptr = ptr -> left;
-			}
+			if(new_node->data >= ptr->data) ptr = ptr->right;
+			else ptr = ptr->left;
 		}
 		
-		if(newNode -> data >= helper -> data)
-		{
-			helper -> right = newNode;
-		}
-		else
-		{
-			helper -> left = newNode;
-		}	 
+		if(new_node->data >= prev_temp -> data) prev_temp -> right = new_node;
+		else prev_temp -> left = new_node; 
 	}
+	cout<<"NODE IS SUCCESSFULLY INSERTED!\n";
 }
 
-void Search()
-{
-	BST_node* ptr = rootNode;
-	int num;
-	cout<<"Enter a number you want to search: ";
-	cin>>num;
-	
-	if(ptr == NULL)
-	{
-		cout<<"Tree is empty!"<<endl;
-	}
-	else
-	{
-		while(ptr != NULL)
-		{
-			if(num == ptr -> data)
-			{
-				break;
-			}
-			else
-			{
-				if(num > ptr -> data)
-				{
-					ptr = ptr -> right;
+// TREE TRAVERSAL ALGORITHMS
+void preorder_traversal(BST_node* root_node) {
+	if(root_node == NULL) return;
+
+	cout<<root_node->data<<"->";
+	preorder_traversal(root_node->left);
+	preorder_traversal(root_node->right);
+}
+
+void postorder_traversal(BST_node* root_node) {
+	if(root_node == NULL) return;
+
+	postorder_traversal(root_node->left);
+	postorder_traversal(root_node->right);
+	cout<<root_node->data<<"->";	
+}
+
+void inorder_traversal(BST_node* root_node) {
+	if(root_node == NULL) return;
+
+	inorder_traversal(root_node->left);
+	cout<<root_node->data<<"->";
+	inorder_traversal(root_node->right);
+}
+
+// DELETION OF NODE
+void delete_node(BST_node* root_node, int key) {
+	if(root_node == NULL) {
+		cout<<"TREE IS EMPTY!"<<endl;
+		return;
+	// delete the root node
+	} else if(key == root_node->data) {
+		BST_node* temp = root->right;
+		BST_node* prev_temp = NULL;
+		BST_node* del = root_node;
+		while(temp->left != NULL) {
+			prev_temp = temp;
+			temp = temp->left;
+		}
+		prev_temp->left = NULL;
+		temp->left = root->left;
+		temp->right = root->right;
+		root = temp;
+		delete del;
+		cout<<"NODE IS DELETED SUCCESSFULLY!"<<endl;
+	} else {
+		BST_node* temp = root_node;
+		BST_node* prev_temp = NULL;
+		// searching the key - whether the key exists or not
+		while(temp->left != NULL && temp->right != NULL) {
+			if(temp->data == key) break;
+			prev_temp = temp;
+
+			if(temp->data > key) temp = temp->left;
+			else temp = temp->right;
+		}
+
+		if(temp->data != key && (temp->left == NULL && temp->right == NULL)) {
+			cout<<"THE VALUE DOES NOT EXIST!"<<endl;
+			return;
+		// if key exists, then do the following:
+		} else {
+			BST_node* del = temp;
+			// node that is to be deleted has only left subtree
+			if(temp->right == NULL) {
+				prev_temp->left = temp->left;
+				delete del;
+			// node that is to be deleted has only right subtree
+			} else if(temp->left == NULL) {
+				prev_temp->left = temp->right;
+				delete del;
+			// deleting a leaf node
+			} else if(temp->left == NULL && temp->right == NULL) {
+				prev_temp->left = prev_temp->right = NULL;
+				delete del;
+			} else {
+				// if node that is to be deleted has subtree on both
+				// left and right side
+				BST_node* p = temp->left;
+				BST_node* prev_p = NULL;
+				if(p->right != NULL) {
+					while(p->right != NULL) {
+						prev_p = p;
+						p = p->right;
+					}
+					prev_p->right = NULL;
+					prev_temp->left = p;
+					p->left = prev_p;
+					p->right = temp->right;
+					delete del;
+				} 
+				else {
+					prev_temp->left = p;
+					p->right = temp->right;
+					delete del;
 				}
-				else
-				{
-					ptr = ptr -> left;
-				}
 			}
-		}
-		
-		if(ptr == NULL)
-		{
-			cout<<"Number Not Found!"<<endl;
-		}
-		else
-		{
-			cout<<"Number Found!"<<endl;
+			cout<<"NODE IS DELETED SUCCESSFULLY!"<<endl;
 		}
 	}
 }
 
-void averageOfAllNodes(BST_node* s)
-{	
-	int numberOfNodes = 0;
-	double sum = 0.0;
-	
-	if(numberOfNodes == 0)
-	{
-		cout<<sum<<endl;
-	}
-	else if(numberOfNodes == 1)
-	{
-		cout<<s -> data<<endl;
-	}
-	else
-	{
-		if(s != NULL)
-		{
-			sum += s -> data;
-			numberOfNodes += 1;
-			averageOfAllNodes(s -> left);
-			averageOfAllNodes(s -> right);
+// SEARCHING
+int search_specific_key(BST_node* root_node, int key) {
+	if(root_node == NULL) return 0;
+
+	if(root_node->data == key) return 1;
+	else {
+		while(root_node != NULL) {
+			if(root_node->data == key) return 1;
+
+			if(key > root_node->data) root_node = root_node->right;
+			else root_node = root_node->left;
 		}
-		cout<<"Average: "<<(sum / numberOfNodes)<<endl;
+
+		if(root_node == NULL) return -1;
+		else return 1;
 	}
 }
 
-void minValue(BST_node* m)
-{
-	if(m == NULL)
-	{
-		cout<<"Tree is empty!"<<endl;
-	}
-	else
-	{
-		while(m -> left != NULL)
-		{
-			m = m -> left;
+// FUNCTIONS FOR FINDING MIN, MAX & AVERAGE
+int max_value(BST_node* root_node) {
+	if(root_node == NULL) return -1;
+	else {
+		int max = 0;
+		while(root_node != NULL) {
+			// if(max < root_node->data) max = root_node->data;
+			max = root_node->data;
+			root_node = root_node->right;
 		}
-		cout<<"Minimum: "<<m -> data<<endl;
+		return max;
 	}
 }
 
-void maxValue(BST_node* m)
-{
-	if(m == NULL)
-	{
-		cout<<"Tree is empty!"<<endl;
-	}
-	else
-	{
-		while(m -> right != NULL)
-		{
-			m = m -> right;
+int min_value(BST_node* root_node) {
+	if(root_node == NULL) return -1;
+	else {
+		int min = 0;
+		while(root_node != NULL) {
+			min = root_node->data;
+			root_node = root_node->left;
 		}
-		cout<<"Maximum: "<<m -> data<<endl;
-	}	
-}
-
-int minValueUsingRecursion(BST_node* m)
-{
-	if(m == NULL)
-	{
-		cout<<"Tree is empty!"<<endl;
-		return -1;
-	}
-	else if(m -> left == NULL)
-	{
-		return m -> data;
-	}
-	else
-	{
-		minValueUsingRecursion(m -> left);
+		return min;
 	}
 }
 
-int maxValueUsingRecursion(BST_node* m)
-{
-	if(m == NULL)
-	{
-		cout<<"Tree is empty!"<<endl;
-		return -1;
-	}
-	else if(m -> right == NULL)
-	{
-		return m -> data;
-	}
-	else
-	{
-		maxValueUsingRecursion(m -> right);
-	}
+float avg_value(BST_node* root_node, int sum, int count) {
+	if(root_node == NULL) return 0;
+
+	sum += root_node->data;
+	count++;
+	cout<<sum<<"	"<<count<<endl;
+	avg_value(root_node->left, sum, count);
+	avg_value(root_node->right, sum, count);
+	return (sum/count);
 }
+
 
 
 
