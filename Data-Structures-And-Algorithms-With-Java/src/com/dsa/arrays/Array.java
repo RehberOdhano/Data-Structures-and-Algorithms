@@ -44,6 +44,16 @@ public class Array {
     }
 
     public static void main(String[] args) {
+        Employee[] employees = new Employee[5];
+
+        employees[0] = new Employee("John", 22, 10000);
+        employees[1] = new Employee("Smith", 22, 20000);
+        employees[2] = new Employee("Tom", 15, 15000);
+        employees[3] = new Employee("Chandler", 25, 18000);
+        employees[4] = new Employee("Rock", 18, 12000);
+
+        Arrays.sort(employees);
+        System.out.println(Arrays.toString(employees));
 
         List<Integer> numbers = new ArrayList<>();
         numbers.add(10);
