@@ -1,7 +1,5 @@
 package com.dsa.arraylists;
 
-import com.dsa.arrays.Array;
-
 import java.util.Comparator;
 import java.util.List;
 
