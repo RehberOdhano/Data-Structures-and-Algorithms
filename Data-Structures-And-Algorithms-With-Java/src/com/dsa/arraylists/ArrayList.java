@@ -15,7 +15,7 @@ public class ArrayList {
 
         return sum;
     }
-    private static <T> void sortArrUsingComparator(List<T> arr) {
+    public static <T> void sortArrUsingComparator(List<T> arr) {
         arr.sort(Comparator.comparingInt(ArrayList::getSum));
     }
 

@@ -2,6 +2,8 @@ package com.dsa.arrays;
 
 import java.util.*;
 
+import static com.dsa.arraylists.ArrayList.sortArrUsingComparator;
+
 public class Array {
 
     // The Arrays.sort method uses the compareTo method on the type of objects the array is consists of.
@@ -11,9 +13,8 @@ public class Array {
     // zero -> means both the objects are the same/equal
     // positive -> means the second object is smaller and comes first
 
-    /**
-     * Generic sort method
-     *
+
+    /** Generic sort method
      * @param <T> generic array
      */
     private static <T> void sortArray(T[] arr) {
@@ -26,21 +27,6 @@ public class Array {
 
     private static <T> void displayArr(T[] arr) {
         System.out.println(Arrays.toString(arr));
-    }
-
-    private static <T> int getSum(T number) {
-        int sum = 0;
-        int val = (int) number;
-        while (val > 0) {
-            sum += val % 10;
-            val /= 10;
-        }
-
-        return sum;
-    }
-
-    private static <T> void sortArrUsingComparator(List<T> arr) {
-        arr.sort(Comparator.comparingInt(Array::getSum));
     }
 
     public static void main(String[] args) {
@@ -70,6 +56,7 @@ public class Array {
             }
         });*/
 
+        //numbers.sort(Comparator.comparingInt(Array::getSum));
         sortArrUsingComparator(numbers);
         System.out.println(numbers);
     }
