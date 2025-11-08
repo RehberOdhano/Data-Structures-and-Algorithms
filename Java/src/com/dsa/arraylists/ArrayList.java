@@ -8,14 +8,15 @@ public class ArrayList {
     private static <T> int getSum(T number) {
         int sum = 0;
         int val = (int) number;
-        while(val > 0) {
+        while (val > 0) {
             sum += val % 10;
             val /= 10;
         }
 
         return sum;
     }
-    public static <T> void sortArrUsingComparator(List<T> arr) {
+
+    private static <T> void sortArrUsingComparator(List<T> arr) {
         arr.sort(Comparator.comparingInt(ArrayList::getSum));
     }
 

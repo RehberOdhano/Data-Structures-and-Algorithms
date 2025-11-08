@@ -1,4 +1,4 @@
-package com.dsa.arrays;
+package com.dsa.customclasses;
 
 public class Employee implements Comparable<Employee> {
     private final String name;
